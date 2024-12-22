@@ -1,0 +1,52 @@
+<!--PAGINA QUE ESTARA EN EL INICIO-->
+{% extends 'base.html' %}
+<!-- extends permite aplicarle la capa hereada de base.html a esta web-->
+{% block title%} Song Request  {% endblock %}
+<!--Block title permite agregarle la seccion en el titulo-->
+
+{% block content%}
+
+    <h2 class="GuestMessage">{{ text_data['key4'] }} {{ text_data['version']}} </h2>
+    <h1 class="title">{{text_data['key2']}}</h1>
+            <section>
+                <div class="container_pvadmin">
+                    <section class="contenedorNoticias">
+                <table class="Anuncios">
+                    <tr>
+                        <th class="FixTable1">Borrar</th>
+                        <th class="FixTable3">Song</th>
+                        <th class="FixTable4">User</th>
+                    </tr>
+                </section>
+                    {% for song_entry in song_data %}
+                        <tr class="ResultSongRequest">
+                            <form action="{{ url_for('admin_song.delete_request') }}" method="POST">
+                                {% if dummy_database %}
+                                 {% set value = song_entry['song'] %}
+                                {% else %}
+                                 {% set value = song_entry['id_song'] %}
+                                {% endif %}
+                                <td><input type="checkbox" name="song_ids" value="{{ value }}" {% if song_entry['selected'] %}checked{% endif %}></td>
+                                <td>{{ song_entry['song'] }}</td>
+                                <td>{{ song_entry['user'] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <button class="Button" type="submit">Eliminar Seleccionadas</button>
+                </form>
+            </section>
+            <div class="MarginButton">
+                <a class="Button" type="Button" value="Regresar" href="{{ url_for('admin_song.add_request')}}">Agregar peticion</a>
+                 <footer class="footerPosition">
+                <div class="footer">
+                    <p>{{ text_data['key1'] }}</p>
+                    <p>{{ text_data['version'] }}</p>
+                <a href="{{ text_data['key3']}}">Contact us.</a></p>
+                <div>
+                </footer>
+            </div>
+          </nav>
+    </div>
+    
+    </form>
+    {% endblock %}

@@ -1,0 +1,4 @@
+*.pyc
+__pycache__/
+example1.png
+env/
