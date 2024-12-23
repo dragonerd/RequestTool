@@ -2,12 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "Song Request",
-      "use": "@vercel/node",
-      "config": {
-        "runtime": "nodejs16.x",
-        "command": "gunicorn --bind :$PORT app:app"
-      }
+      "src": "main.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "main.py"
     }
   ]
 }
