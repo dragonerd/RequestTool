@@ -6,7 +6,7 @@
       "use": "@vercel/node",
       "config": {
         "runtime": "nodejs16.x",
-        "command": "python main.py"
+        "command": "gunicorn --bind :$PORT app:app"
       }
     }
   ]
