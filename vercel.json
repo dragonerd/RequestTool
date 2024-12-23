@@ -1,3 +1,13 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/Song Request/main" }]
+  "version": 2,
+  "builds": [
+    {
+      "src": "Song Request",
+      "use": "@vercel/node",
+      "config": {
+        "runtime": "nodejs16.x",
+        "command": "python main.py"
+      }
+    }
+  ]
 }
